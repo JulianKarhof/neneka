@@ -13,7 +13,8 @@ export default function Home() {
       <main className={styles.main}>
         <img src="/nene.png" className={styles.nene} />
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">ねねか's</a> Page!
+          Welcome to <a href="http://www.meish.me/i/neko_neneka">ねねか's</a>{" "}
+          Page!
         </h1>
 
         <div className={styles.skew}>
