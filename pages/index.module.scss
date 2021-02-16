@@ -1,11 +1,7 @@
 .container {
+  color: white;
   min-height: 100vh;
   padding: 0 0.5rem;
-  background-image: url("/nene.png");
-  background-size: 50rem;
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: bottom;
   position: absolute;
   width: 100%;
   background-color: #86c4e1;
@@ -14,6 +10,14 @@
 
 .main {
   padding: 5rem 0;
+}
+
+.nene {
+  position: absolute;
+  height: 90vh;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
 }
 
 .title a {
@@ -28,6 +32,7 @@
   font-size: 4rem;
   color: #528ac7;
   text-shadow: 1px 1px 10px #528ac7;
+  font-weight: bold;
 }
 
 .title {
@@ -35,26 +40,74 @@
   margin-left: 5rem;
 }
 
-.description {
-  z-index: 1;
-  p {
-    font-size: 40px;
-    margin: 0 0 2rem;
-    font-weight: bold;
-  }
+.skew {
   margin-left: 2rem;
   margin-top: 5rem;
-  max-width: 60%;
-  color: white;
-  font-size: 20px;
-  background-color: #528ac788;
-  padding: 2rem;
   transform: skew(3deg, -3deg);
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1);
+  max-width: 60%;
+  .description {
+    p {
+      font-size: 40px;
+      margin: 0 0 2rem;
+      font-weight: bold;
+    }
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 20px;
+    background-color: #528ac788;
+    padding: 2rem;
+    transition-duration: 300ms;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .socials {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    transform: translate(10px, 10px);
+
+    .buttonWrap:hover a {
+      box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.1);
+      transform: translate(-10px, -10px);
+    }
+
+    a {
+      background-color: white;
+      margin-right: 1rem;
+      transition-duration: 300ms;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      img {
+        margin-right: 0.5rem;
+        height: 1rem;
+      }
+    }
+
+    .twitter {
+      color: #1da1f2;
+    }
+    .youtube {
+      color: #ff0000;
+    }
+    .twitch {
+      color: #6441a5;
+    }
+    .fanbox {
+      color: #2c333c;
+    }
+    .marshmallow {
+      color: #ffae8e;
+      img {
+        height: 1.5rem;
+      }
+    }
+  }
 }
 
 .info {
   padding: 5rem;
+  background-color: #528ac7;
 }
 
 ul.nenekaList {
@@ -84,7 +137,7 @@ ul.nenekaList {
 }
 
 .particles {
-  z-index: 0;
+  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
