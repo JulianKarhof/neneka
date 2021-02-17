@@ -22,7 +22,8 @@ export const SocialButton: React.FC<SocialButtonProps> = ({
           target="_blank"
           style={{ color }}
         >
-          <img src={icon} /> {children}
+          {icon ? <img src={icon} /> : <></>}
+          {children}
         </a>
       </div>
     </div>
