@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "./index.module.scss";
 import Particles from "react-particles-js";
+import { SocialButton } from "../components/socialButton/socialButton";
 
 export default function Home() {
   return (
@@ -10,78 +11,68 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <img src="/nene.png" className={styles.nene} />
-        <h1 className={styles.title}>
-          Welcome to <a href="http://www.meish.me/i/neko_neneka">ねねか's</a>{" "}
-          Page!
-        </h1>
+      <img src="/nene.png" className={styles.nene} />
+      <h1 className={styles.title}>
+        Welcome to <a href="http://www.meish.me/i/neko_neneka">ねねか's</a>{" "}
+        Page!
+      </h1>
 
-        <div className={styles.skew}>
-          <div className={styles.description}>
-            <p>Intro</p>
-            Neneka is a very hardworking Indie VTuber, associated with the
-            Doujin Circle Rumu Rumu. She interacts with her fans frequently, and
-            loves playing games such as Mahjong Souls, League of Legends, Apex
-            Legends, and Valorant! She also loves watching anime, and singing
-            songs.
-            <br />
-            <br />
-            The moment she reached 600 subscribers on Youtube, she streamed for
-            4 days, and managed to break 2000 subscribers in that marathon
-            session! Currently, she's on a 14-day long streaming marathon to
-            raise money for her rent and other living expenses.
-          </div>
-
-          <div className={styles.socials}>
-            <div className={styles.buttonWrap}>
-              <a
-                className={styles.youtube}
-                href="https://www.youtube.com/channel/UCD8i-h5iqOaysEkDnF1CQ_A"
-                target="_blank"
-              >
-                <img src="/youtube.png" /> YouTube
-              </a>
-            </div>
-            <div className={styles.buttonWrap}>
-              <a
-                className={styles.twitter}
-                href="https://twitter.com/neko_neneka"
-                target="_blank"
-              >
-                <img src="/twitter.svg" /> Twitter
-              </a>
-            </div>
-            <div className={styles.buttonWrap}>
-              <a
-                className={styles.twitch}
-                href="https://www.twitch.tv/neko_neneka"
-                target="_blank"
-              >
-                <img src="/twitch.svg" /> Twitch
-              </a>
-            </div>
-            <div className={styles.buttonWrap}>
-              <a
-                className={styles.fanbox}
-                href="https://neko-neneka.fanbox.cc/"
-                target="_blank"
-              >
-                Fanbox
-              </a>
-            </div>
-            <div className={styles.buttonWrap}>
-              <a
-                className={styles.marshmallow}
-                href="https://marshmallow-qa.com/neko_neneka"
-                target="_blank"
-              >
-                <img src="/marshmallow.png" /> Marshmallow
-              </a>
-            </div>
-          </div>
+      <div className={styles.skew}>
+        <div className={styles.description}>
+          <p>Intro</p>
+          Neneka is a very hardworking Indie VTuber, associated with the Doujin
+          Circle Rumu Rumu. She interacts with her fans frequently, and loves
+          playing games such as Mahjong Souls, League of Legends, Apex Legends,
+          and Valorant! She also loves watching anime, and singing songs.
+          <br />
+          <br />
+          The moment she reached 600 subscribers on Youtube, she streamed for 4
+          days, and managed to break 2000 subscribers in that marathon session!
+          Currently, she's on a 14-day long streaming marathon to raise money
+          for her rent and other living expenses.
         </div>
-      </main>
+
+        <div className={styles.socials}>
+          <SocialButton
+            url="https://www.youtube.com/channel/UCD8i-h5iqOaysEkDnF1CQ_A"
+            icon="/youtube.png"
+            color="#ff0000"
+          >
+            YouTube
+          </SocialButton>
+          <SocialButton
+            url="https://twitter.com/neko_neneka"
+            icon="/twitter.svg"
+            color="#1da1f2"
+          >
+            Twitter
+          </SocialButton>
+          <SocialButton
+            url="https://www.reddit.com/user/neko_neneka/"
+            icon="/reddit.svg"
+            color="#FF5700"
+          >
+            Reddit
+          </SocialButton>
+          <SocialButton
+            url="https://www.twitch.tv/neko_neneka"
+            icon="/twitch.svg"
+            color="#6441a5"
+          >
+            Twitch
+          </SocialButton>
+          <SocialButton url="https://neko-neneka.fanbox.cc/" color="#2c333c">
+            Fanbox
+          </SocialButton>
+          <SocialButton
+            url="https://marshmallow-qa.com/neko_neneka"
+            icon="/marshmallow.png"
+            color="#ffae8e"
+          >
+            Marshmallow
+          </SocialButton>
+        </div>
+      </div>
       <Particles
         className={styles.particles}
         params={{
