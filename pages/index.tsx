@@ -11,15 +11,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <img src="/nene.png" className={styles.nene} />
       <h1 className={styles.title}>
         Welcome to <a href="http://www.meish.me/i/neko_neneka">ねねか's</a>{" "}
         Page!
       </h1>
 
+      <img src="/nene.png" className={styles.nene} />
+
       <div className={styles.skew}>
         <div className={styles.description}>
-          <p>Intro</p>
+          <p>Introduction</p>
           Neneka is a very hardworking Indie VTuber, associated with the Doujin
           Circle Rumu Rumu. She interacts with her fans frequently, and loves
           playing games such as Mahjong Souls, League of Legends, Apex Legends,

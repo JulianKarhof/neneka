@@ -30,19 +30,34 @@
 
   .nene {
     position: absolute;
-    height: 90vh;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    display: block;
+    width: auto;
     bottom: 0;
     right: 0;
     z-index: 5;
     pointer-events: none;
   }
 
+  @media (max-width: 1400px) {
+    .nene {
+      position: relative;
+      bottom: -6rem;
+      z-index: 0;
+      width: 80%;
+      margin-left: 5%;
+    }
+  }
+
   .skew {
-    margin-left: 2rem;
+    margin: 0 2rem;
     margin-top: 5rem;
     transform: skew(3deg, -3deg);
     max-width: 60%;
     .description {
+      z-index: 2;
       p {
         font-size: 40px;
         margin: 0 0 2rem;
@@ -51,7 +66,7 @@
       margin-bottom: 1rem;
       color: white;
       font-size: 20px;
-      background-color: #528ac788;
+      background-color: #528ac7;
       padding: 2rem;
       transition-duration: 300ms;
       box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.1);
@@ -80,6 +95,18 @@
           height: 1rem;
         }
       }
+    }
+
+    @media (max-width: 1400px) {
+      .socials {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .skew {
+      max-width: 100%;
     }
   }
 
