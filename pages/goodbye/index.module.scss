@@ -1,6 +1,13 @@
 .bg {
   display: flex;
+  flex-direction: column;
   margin-top: 2rem;
-  justify-content: center;
+  align-items: center;
   width: 100vw;
+
+  .switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
 }
