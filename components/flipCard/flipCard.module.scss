@@ -1,0 +1,12 @@
+.front {
+  height: 20rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+  border: 1px solid grey;
+  background-color: white;
+  padding: 1rem;
+}
+
+.back {
+  @extend .front;
+}

@@ -41,7 +41,7 @@
     pointer-events: none;
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 800px) {
     .nene {
       position: relative;
       bottom: -6rem;
@@ -97,14 +97,14 @@
       }
     }
 
-    @media (max-width: 1400px) {
+    @media (max-width: 800px) {
       .socials {
         display: none;
       }
     }
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 800px) {
     .skew {
       max-width: 100%;
     }
