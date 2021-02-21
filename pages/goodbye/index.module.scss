@@ -4,10 +4,17 @@
   padding-top: 2rem;
   align-items: center;
   width: 100vw;
-  background-color: whitesmoke;
+  background-color: #5dadec;
   min-height: 100vh;
 
+  .header {
+    color: white;
+    font-size: 5rem;
+    font-weight: bold;
+  }
+
   .switch {
+    color: white;
     display: flex;
     align-items: center;
     margin-bottom: 1rem;

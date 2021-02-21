@@ -9,6 +9,7 @@ const GoodBye: React.FC = () => {
 
   return (
     <div className={styles.bg}>
+      <p className={styles.header}>子狐ねねかの思い出</p>
       <div className={styles.switch}>
         JP
         <Switch
