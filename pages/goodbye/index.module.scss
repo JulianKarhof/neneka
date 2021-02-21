@@ -1,13 +1,19 @@
 .bg {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  padding-top: 2rem;
   align-items: center;
   width: 100vw;
+  background-color: whitesmoke;
+  min-height: 100vh;
 
   .switch {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+  }
+
+  .card {
+    margin-bottom: 2rem;
   }
 }

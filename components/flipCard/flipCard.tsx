@@ -24,8 +24,12 @@ export const FlipCard: React.FC<FlipCardProps> = ({
     setFlipped(flipDefault);
   }, [flipDefault, setFlipped]);
   return (
-    <Tilt options={{ max: 10, perspective: 1000, scale: 1.1 }}>
-      <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
+    <Tilt options={{ max: 0, perspective: 1000, scale: 1.1 }}>
+      <ReactCardFlip
+        isFlipped={flipped}
+        flipDirection="horizontal"
+        containerStyle={{ backfaceVisibility: "hidden" }}
+      >
         <div className={styles.front} onClick={() => setFlipped(!flipped)}>
           {jp}
         </div>

@@ -10,7 +10,7 @@ const GoodBye: React.FC = () => {
   return (
     <div className={styles.bg}>
       <div className={styles.switch}>
-        JP{" "}
+        JP
         <Switch
           checked={languageIsEn}
           onChange={(event) => setLanguageIsEn(event.target.checked)}
@@ -19,13 +19,15 @@ const GoodBye: React.FC = () => {
       </div>
       {messages.map((message) => {
         return (
-          <FlipCard
-            id={message.id}
-            author={message.author}
-            jp={message.content.jp}
-            en={message.content.en}
-            flipDefault={languageIsEn}
-          />
+          <div className={styles.card}>
+            <FlipCard
+              id={message.id}
+              author={message.author}
+              jp={message.content.jp}
+              en={message.content.en}
+              flipDefault={languageIsEn}
+            />
+          </div>
         );
       })}
     </div>
