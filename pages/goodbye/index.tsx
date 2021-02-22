@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlipCard } from "../../components/flipCard/flipCard";
-import { Switch } from "@material-ui/core";
+import { CircularProgress, Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
 import { Message } from "../../components/message/message";
 import classNames from "classnames";
@@ -41,6 +41,7 @@ const GoodBye: React.FC = () => {
             });
           }
         }
+        shuffleArray(messages);
         setMessages(messages);
       });
 
@@ -110,7 +111,7 @@ const GoodBye: React.FC = () => {
                 );
               })
             ) : (
-              <></>
+              <CircularProgress color="secondary" />
             )}
           </div>
         </div>
