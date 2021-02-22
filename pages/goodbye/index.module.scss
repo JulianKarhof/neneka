@@ -23,12 +23,21 @@
     cursor: pointer;
   }
 
-  .header {
-    z-index: 1;
-    font-family: "Kosugi Maru";
-    font-size: 5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
+  .headWrapper {
+    z-index: 5;
+
+    .header {
+      font-family: "Kosugi Maru";
+      font-size: 5rem;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: bold;
+      margin-top: -1rem;
+    }
   }
 
   @media screen and (max-width: 800px) {

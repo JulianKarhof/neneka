@@ -73,7 +73,10 @@ const GoodBye: React.FC = () => {
           className={styles.neneka}
           onClick={() => audio.play()}
         />
-        <p className={styles.header}>子狐ねねかの思い出</p>
+        <div className={styles.headWrapper}>
+          <p className={styles.header}>子狐ねねかの思い出</p>
+          <p className={styles.subtitle}>Neko Neneka Memories</p>
+        </div>
         <LangSwitch />
         <div className={styles.wrapper}>
           <div
