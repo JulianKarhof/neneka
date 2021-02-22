@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlipCard } from "../../components/flipCard/flipCard";
 import messages from "../../data/messages.json";
 import { Switch } from "@material-ui/core";
@@ -8,7 +8,11 @@ import classNames from "classnames";
 
 const GoodBye: React.FC = () => {
   const [languageIsEn, setLanguageIsEn] = useState(false);
-  let audio = new Audio("/sneeze.mp3");
+  const [audio, setAudio] = useState(null);
+
+  useEffect(() => {
+    setAudio(new Audio("/sneeze.mp3")); // only call client
+  });
 
   return (
     <>
