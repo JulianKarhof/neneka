@@ -11,6 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@octokit/core": "^3.2.5",
     "@types/classnames": "^2.2.11",
     "add": "^2.0.6",
     "autoprefixer": "^10.2.4",

@@ -1,16 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { FlipCard } from "../../components/flipCard/flipCard";
-import messages from "../../data/messages.json";
 import { Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
 import { Message } from "../../components/message/message";
 import classNames from "classnames";
+import { Octokit } from "@octokit/core";
+
+interface Message {
+  id: string;
+  nickname: string;
+  content: Content;
+}
+
+interface Content {
+  jp?: string;
+  en?: string;
+}
+
+const octokit = new Octokit();
 
 const GoodBye: React.FC = () => {
   const [languageIsEn, setLanguageIsEn] = useState(false);
   const [audio, setAudio] = useState(null);
+  const [messages, setMessages] = useState<Message[]>();
 
   useEffect(() => {
+    octokit
+      .request("GET /gists/5f440dc7ed9e92f407001245ee654001")
+      .then((res) => JSON.parse(res.data.files["neneka_messages.json"].content))
+      .then((data) => {
+        let messages: Message[] = [];
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+            messages.push({
+              id: key,
+              content: data[key].content,
+              nickname: data[key].nickname,
+            });
+          }
+        }
+        setMessages(messages);
+      });
+
     setAudio(new Audio("/sneeze.mp3"));
   }, [setAudio]);
 
@@ -59,25 +90,31 @@ const GoodBye: React.FC = () => {
                 ? "You can click on each individual card to flip it!"
                 : "カードをクリックしたら裏返すことができます!"}
             </p>
-            {messages.map((message, i) => {
-              return (
-                <div className={styles.card} key={i}>
-                  <FlipCard
-                    id={message.id}
-                    author={message.author.split("#")[0]}
-                    jp={message.content.jp}
-                    en={message.content.en}
-                    flipDefault={languageIsEn}
-                  />
-                </div>
-              );
-            })}
+            {messages ? (
+              messages.map((message) => {
+                return (
+                  <div className={styles.card} key={message.id}>
+                    <FlipCard
+                      author={message.nickname}
+                      jp={message.content.jp}
+                      en={message.content.en}
+                      flipDefault={languageIsEn}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+const objectMap = (obj: Object, fn: Function) =>
+  Object.fromEntries(Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)]));
 
 function shuffleArray(array: Array<Object>) {
   for (let i = array.length - 1; i > 0; i--) {
