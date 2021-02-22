@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import styles from "./flipCard.module.scss";
 import Tilt from "react-tilt";

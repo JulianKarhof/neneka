@@ -19,6 +19,12 @@
     margin-bottom: 2rem;
   }
 
+  @media screen and (max-width: 800px) {
+    .header {
+      font-size: 10vw;
+    }
+  }
+
   .wrapper {
     width: 80%;
     margin-bottom: 2rem;
