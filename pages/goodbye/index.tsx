@@ -3,7 +3,7 @@ import { FlipCard } from "../../components/flipCard/flipCard";
 import messages from "../../data/messages.json";
 import { Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
-import { Message } from "./message";
+import { Message } from "../../components/message/message";
 import classNames from "classnames";
 
 const GoodBye: React.FC = () => {
