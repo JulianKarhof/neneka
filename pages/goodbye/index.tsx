@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FlipCard } from "../../components/flipCard/flipCard";
-import styles from "./index.module.scss";
 import messages from "../../data/messages.json";
-import { Switch } from "@material-ui/core";
+import { Button, Switch } from "@material-ui/core";
+import styles from "./index.module.scss";
 
 const GoodBye: React.FC = () => {
   const [languageIsEn, setLanguageIsEn] = useState(false);

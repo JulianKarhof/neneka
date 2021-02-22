@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap");
+
 .front,
 .back {
   @extend .shadow;
@@ -8,6 +10,10 @@
   padding: 1rem;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+.front {
+  font-family: "Kosugi Maru";
 }
 
 .shadow {
