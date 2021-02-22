@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FlipCard } from "../../components/flipCard/flipCard";
 import messages from "../../data/messages.json";
-import { Button, Switch } from "@material-ui/core";
+import { Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
 
 const GoodBye: React.FC = () => {
@@ -10,6 +10,11 @@ const GoodBye: React.FC = () => {
   return (
     <div className={styles.bg}>
       <p className={styles.header}>子狐ねねかの思い出</p>
+      <p>
+        {languageIsEn
+          ? "You can click on each individual card to flip it!"
+          : "カードをクリックして反転させることができます!"}
+      </p>
       <div className={styles.switch}>
         JP
         <Switch

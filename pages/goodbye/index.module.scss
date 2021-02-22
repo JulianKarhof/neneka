@@ -10,10 +10,10 @@
   width: 100vw;
   background-color: #5dadec;
   min-height: 100vh;
+  color: white;
 
   .header {
     font-family: "Kosugi Maru";
-    color: white;
     font-size: 5rem;
     font-weight: bold;
   }
@@ -28,5 +28,6 @@
 
   .card {
     margin-bottom: 2rem;
+    color: black;
   }
 }
