@@ -15,15 +15,16 @@
   color: white;
 
   .neneka {
+    z-index: 5;
     position: fixed;
     right: -20rem;
     top: 5em;
     transform: rotate(-30deg);
-    z-index: 0;
     cursor: pointer;
   }
 
   .header {
+    z-index: 1;
     font-family: "Kosugi Maru";
     font-size: 5rem;
     font-weight: bold;
@@ -63,14 +64,6 @@
         text-align: center;
       }
 
-      .switch {
-        color: white;
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-
       .card {
         margin-bottom: 2rem;
         color: black;
@@ -79,10 +72,28 @@
   }
 }
 
+.switch {
+  z-index: 5;
+  color: white;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .jp {
   font-family: "Kosugi Maru";
 }
 
 .en {
   font-family: "Nunito";
+}
+
+.particles {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
