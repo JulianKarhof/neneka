@@ -11,11 +11,11 @@ const GoodBye: React.FC = () => {
   const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    setAudio(new Audio("/sneeze.mp3")); // only call client
-  });
+    setAudio(new Audio("/sneeze.mp3"));
+  }, [setAudio]);
 
   return (
-    <>
+    <div>
       <div className={styles.bg}>
         <img
           src="neneka.png"
@@ -59,9 +59,9 @@ const GoodBye: React.FC = () => {
                 ? "You can click on each individual card to flip it!"
                 : "カードをクリックしたら裏返すことができます!"}
             </p>
-            {messages.map((message) => {
+            {messages.map((message, i) => {
               return (
-                <div className={styles.card}>
+                <div className={styles.card} key={i}>
                   <FlipCard
                     id={message.id}
                     author={message.author.split("#")[0]}
@@ -75,7 +75,7 @@ const GoodBye: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
