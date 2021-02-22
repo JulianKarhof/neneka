@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import styles from "./flipCard.module.scss";
 import Tilt from "react-tilt";
@@ -17,12 +17,26 @@ export const FlipCard: React.FC<FlipCardProps> = ({
   flipDefault,
 }) => {
   const [flipped, setFlipped] = useState(flipDefault);
+  const [unflip, setUnflip] = useState(false);
 
   const isOneSided = !(en && jp);
 
+  useEffect(() => {
+    setUnflip(true);
+    setFlipped(false);
+    setTimeout(function () {
+      setUnflip(false);
+    }, 100);
+  }, [flipDefault]);
+
   return (
     <Tilt options={{ max: 0, perspective: 1000, scale: 1.1 }}>
-      <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
+      <ReactCardFlip
+        isFlipped={flipped}
+        flipDirection="horizontal"
+        flipSpeedBackToFront={unflip ? 0 : 0.6}
+        flipSpeedFrontToBack={unflip ? 0 : 0.6}
+      >
         <div
           className={flipDefault ? styles.back : styles.front}
           onClick={() => {
