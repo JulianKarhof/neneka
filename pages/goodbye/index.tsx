@@ -48,6 +48,19 @@ const GoodBye: React.FC = () => {
     setAudio(new Audio("/sneeze.mp3"));
   }, [setAudio]);
 
+  const LangSwitch = (): React.ReactElement => {
+    return (
+      <div className={styles.switch}>
+        JP
+        <Switch
+          checked={languageIsEn}
+          onChange={(event) => setLanguageIsEn(event.target.checked)}
+        />
+        EN
+      </div>
+    );
+  };
+
   return (
     <>
       <Head>
@@ -61,14 +74,7 @@ const GoodBye: React.FC = () => {
           onClick={() => audio.play()}
         />
         <p className={styles.header}>子狐ねねかの思い出</p>
-        <div className={styles.switch}>
-          JP
-          <Switch
-            checked={languageIsEn}
-            onChange={(event) => setLanguageIsEn(event.target.checked)}
-          />
-          EN
-        </div>
+        <LangSwitch />
         <div className={styles.wrapper}>
           <div
             className={classNames(
@@ -79,14 +85,7 @@ const GoodBye: React.FC = () => {
             <Message isEn={languageIsEn} />
           </div>
           <div className={styles.feed}>
-            <div className={styles.switch}>
-              JP
-              <Switch
-                checked={languageIsEn}
-                onChange={(event) => setLanguageIsEn(event.target.checked)}
-              />
-              EN
-            </div>
+            <LangSwitch />
             <p
               className={classNames(
                 styles.info,
@@ -150,9 +149,6 @@ const GoodBye: React.FC = () => {
     </>
   );
 };
-
-const objectMap = (obj: Object, fn: Function) =>
-  Object.fromEntries(Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)]));
 
 function shuffleArray(array: Array<Object>) {
   for (let i = array.length - 1; i > 0; i--) {
