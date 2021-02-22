@@ -3,8 +3,8 @@ import { FlipCard } from "../../components/flipCard/flipCard";
 import messages from "../../data/messages.json";
 import { Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
-import StackGrid from "react-stack-grid";
 import { Message } from "./message";
+import classNames from "classnames";
 
 const GoodBye: React.FC = () => {
   const [languageIsEn, setLanguageIsEn] = useState(false);
@@ -21,7 +21,12 @@ const GoodBye: React.FC = () => {
         EN
       </div>
       <div className={styles.wrapper}>
-        <div className={styles.message}>
+        <div
+          className={classNames(
+            styles.message,
+            languageIsEn ? styles.en : styles.jp
+          )}
+        >
           <Message isEn={languageIsEn} />
         </div>
         <div className={styles.feed}>
@@ -33,7 +38,12 @@ const GoodBye: React.FC = () => {
             />
             EN
           </div>
-          <p className={styles.info}>
+          <p
+            className={classNames(
+              styles.info,
+              languageIsEn ? styles.en : styles.jp
+            )}
+          >
             {languageIsEn
               ? "You can click on each individual card to flip it!"
               : "カードをクリックしたら裏返すことができます!"}
