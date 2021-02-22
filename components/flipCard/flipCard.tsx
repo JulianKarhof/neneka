@@ -28,12 +28,14 @@ export const FlipCard: React.FC<FlipCardProps> = ({
           onClick={() => setFlipped(!flipped)}
         >
           {flipDefault ? en : jp}
+          <p className={styles.author}>- {author}</p>
         </div>
         <div
           className={flipDefault ? styles.front : styles.back}
           onClick={() => setFlipped(!flipped)}
         >
           {flipDefault ? jp : en}
+          <p className={styles.author}>- {author}</p>
         </div>
       </ReactCardFlip>
     </Tilt>
