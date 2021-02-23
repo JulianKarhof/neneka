@@ -7,7 +7,7 @@ interface MessageProps {
 export const Message: React.FC<MessageProps> = ({ isEn }) => {
   return isEn ? (
     <>
-      <p>To Neneka</p>
+      <p>To Neko Neneka</p>
       <br />
 
       <p>Congratulations on your graduation.</p>
@@ -53,9 +53,9 @@ export const Message: React.FC<MessageProps> = ({ isEn }) => {
         Just like Neneka, this server too will change. It won&rsquo;t be the
         Neneka fan server anymore, but a server for your new life. All these
         channels will disappear so they can give birth to a new home for a new
-        you. Because everything will be gone, we hope that these messages will
-        at least remain somewhere in your heart, just like you will always
-        remain in ours.
+        you. A home you can always feel warm in. Because everything will be gone
+        when you come back, we hope that these messages will at least remain
+        somewhere in your heart, just like you will always remain in ours.
       </p>
       <br />
 
@@ -70,8 +70,9 @@ export const Message: React.FC<MessageProps> = ({ isEn }) => {
 
       <p>
         We promise that our server will always welcome you with open arms in the
-        future, no matter which form you may take. You will always, always find
-        support here, so please come back whenever you want.
+        future, no matter which form you may take. There will always, always be
+        people who support you here, and who love everything about you, so
+        please come back whenever you want.
       </p>
       <br />
 
@@ -90,63 +91,52 @@ export const Message: React.FC<MessageProps> = ({ isEn }) => {
     </>
   ) : (
     <>
-      <p>ネネカへ</p>
+      <p>子狐ねねか様へ</p>
       <br />
-
-      <p>この度はご卒業おめでとうございます。</p>
+      <p>卒業おめでとうございます。</p>
       <br />
-
       <p>
-        突然の発表だったかもしれませんが、これから先、どこへ行くにしても、誰になるにしても、皆さんのご健闘をお祈りしています。
+        この卒業の発表は、多くの方にとって突然のことだったかもしれませんが、どこに居ても、どんな姿になろうとも、今後の活躍が上手く行くよう願っています。
       </p>
       <br />
-
       <p>
-        最初からファンだった人も、14日のストリームでしか知らなかった人も、ここにいる人たちはみんな猫ねねかを好きになって、精一杯応援したいと思ったからこそ、ここにいるんです。だから、この皆さんからのメッセージで、その気持ちが少しでも伝わればいいなと思っています。
+        デビュー時からのファンも、最後の14日間配信の中でファンになった人も、ここに居る全員はねねかの事が凄く大好きだから今まで精一杯応援してきました。なので、皆からのこのメッセージに込められた想いがちゃんと伝われば幸いです。
       </p>
       <br />
-
       <p>
-        この2週間は忘れられない瞬間がたくさんありました。この素晴らしいストリームのアーカイブがなくても、みんなが送ってくれたプレゼント、共有されたクリップ、ここに来てくれたVtuberの友達、そして毎日の思い出は永遠に私たちの心に刻まれていくでしょう。ここにいる誰もが、私たちに与えてくれたものを忘れることはないでしょうから、これからも全力で応援させてください。
+        この2週間は忘れ難い思い出でいっぱいでした。例えこの素敵な配信のアーカイブが残らずとも、届けられたプレゼント、共有された切り抜き動画、配信に来てくれたVtuberのお友達、そして、毎日重ねてきた思い出はずっと永遠に皆の心の中に刻まれると思います。どうか今後もこうして応援を続けさせてください。ねねかが私達に与えてくれたものは一生忘れません。
       </p>
       <br />
-
       <p>
-        私たちができる限りのサポートが皆様のお役に立てたならば、そのお陰でこれからの人生がより快適に過ごせるようになることを願っています。私たちの唯一の願いは、皆様に幸せになっていただくことですので、皆様のご支援のおかげで毎日少しでも笑顔になっていただければ、それ以上の感謝の気持ちでいっぱいです。
+        皆のサポートがねねかの役に立ち、そしてそのお陰で生活が楽になっているのであれば何よりです。私達の唯一の願いはねねかが幸せになる事です。だから、皆のサポートでこれからの毎日のあなたが少しでもより笑顔になってくれれば非常に嬉しく思います。
       </p>
       <br />
-
       <p>
-        ネネカと同じように、このサーバーも変わります。ネネカのファンサーバーではなく、あなたの新生活のためのサーバーになります。全てのチャンネルが消えて、新しいあなたのための新しいホームが誕生します。すべてが消えてしまうからこそ、このメッセージが少なくともあなたの心のどこかに残っていることを願っています。
+        ねねかと同じように、このサーバーも変わります。もうねねかのファンサーバーではなく、ねねかの新たな人生のファンサーバーになります。なのでこのdiscordチャンネルは全て消え、新しい「あなた」のために、いつもあなたを温められるような新しい居場所として、discordチャンネルを建てます。あなたが帰ってきた時、今ここにある全てが消えて無くなっていても、このメッセージだけは心のどこがに残してもらえると嬉しいです。私達の心の中にもいつもあなたが居てくれますように。
       </p>
       <br />
-
       <p>
         生まれてきてくれてありがとう。
         <br />
-        毎日一生懸命働いてくれてありがとう。
+        毎日一生懸命頑張ってくれてありがとう。
         <br />
-        たくさんの人生の瞬間を私たちと共有してくれてありがとう。
+        いっぱい思い出をくれてありがとう。
         <br />
-        ねこねかになってくれてありがとう。
+        子狐ねねかになってくれてありがとう。
       </p>
       <br />
-
       <p>
-        これからも、どんな形であっても、私たちのサーバーはあなたを心を込めてお迎えすることをお約束します。いつでも、いつでも、いつでも、ここでサポートが受けられますので、いつでも戻ってきてくださいね。
+        約束します。どんな姿になっても、これからもこのサーバーはいつでもあなたを温かく大歓迎します。ここではいつも応援してくれる人が居ます、あなたの全てを大好きな人が。
+        <br />
+        だからいつでも帰って来てください。
       </p>
       <br />
-
-      <p>あなたの新生活が、さらに素敵な未来への第一歩となりますように。</p>
-      <br />
-
-      <p>またいつかお会いしましょう。</p>
-      <br />
-
+      <p>この新しい人生がさらに素敵な未来への第一歩となりますように。</p> <br />
+      <p>またいつか会いましょう。</p>
       <p>
-        愛を込めて。
+        愛を込めて、
         <br />
-        ネネカファンサーバー全体
+        ファンサーバーの全員より
       </p>
     </>
   );
