@@ -28,7 +28,7 @@ const GoodBye: React.FC = () => {
 
   useEffect(() => {
     octokit
-      .request("GET /gists/5f440dc7ed9e92f407001245ee654001")
+      .request("GET /gists/3caa3be29ee69626545b7098f7d26d00")
       .then((res) => JSON.parse(res.data.files["neneka_messages.json"].content))
       .then((data) => {
         let messages: Message[] = [];
