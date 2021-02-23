@@ -43,7 +43,9 @@ export const FlipCard: React.FC<FlipCardProps> = ({
             if (!isOneSided) setFlipped(!flipped);
           }}
         >
-          {isOneSided ? (en ? en : jp) : flipDefault ? en : jp}
+          <p className={styles.message}>
+            {isOneSided ? (en ? en : jp) : flipDefault ? en : jp}
+          </p>
           <p className={styles.author}>- {author}</p>
         </div>
         <div
@@ -52,7 +54,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({
             if (!isOneSided) setFlipped(!flipped);
           }}
         >
-          {flipDefault ? jp : en}
+          <p className={styles.message}>{flipDefault ? jp : en}</p>
           <p className={styles.author}>- {author}</p>
         </div>
       </ReactCardFlip>
