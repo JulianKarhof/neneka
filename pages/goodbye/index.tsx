@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FlipCard } from "../../components/flipCard/flipCard";
-import { CircularProgress, Switch } from "@material-ui/core";
+import { CircularProgress, IconButton, Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
 import { Message } from "../../components/message/message";
 import classNames from "classnames";
 import { Octokit } from "@octokit/core";
 import Particles from "react-particles-js";
 import Head from "next/head";
+import cookie from "js-cookie";
+import { Shuffle } from "@material-ui/icons";
 
 interface Message {
   id: string;
@@ -27,6 +29,12 @@ const GoodBye: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>();
 
   useEffect(() => {
+    let seed: number;
+    if (!cookie.get("seed")) {
+      let arbitrary: number = getRandomArbitrary(1, 1000000);
+      cookie.set("seed", arbitrary.toString());
+      seed = arbitrary;
+    } else seed = parseInt(cookie.get("seed"));
     octokit
       .request("GET /gists/3caa3be29ee69626545b7098f7d26d00")
       .then((res) => JSON.parse(res.data.files["neneka_messages.json"].content))
@@ -41,7 +49,7 @@ const GoodBye: React.FC = () => {
             });
           }
         }
-        shuffleArray(messages);
+        shuffle(messages, seed);
         setMessages(messages);
       });
 
@@ -153,11 +161,29 @@ const GoodBye: React.FC = () => {
   );
 };
 
-function shuffleArray(array: Array<Object>) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+function shuffle(array: any[], seed: number) {
+  var m = array.length,
+    t,
+    i;
+
+  while (m) {
+    i = Math.floor(random(seed) * m--);
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+    ++seed;
   }
+
+  return array;
+}
+
+function random(seed: number) {
+  var x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
+}
+
+function getRandomArbitrary(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 export default GoodBye;
