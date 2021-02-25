@@ -126,6 +126,22 @@ const GoodBye: React.FC = () => {
             )}
           </div>
         </div>
+        <div className={styles.specialThanks}>
+          <p>Special thanks to:</p>
+          <a href="https://discordapp.com/users/170544234514874368">Sheep</a>
+          <a href="https://www.youtube.com/channel/UCIydRbXAE2Nn2YAoGrzOL0w">
+            有栖川シュア
+          </a>
+          <a href="https://discordapp.com/users/214785086195761153">Azuraga</a>
+          <a href="https://discordapp.com/users/232044724549058562">bunpan</a>
+        </div>
+
+        <p className={styles.contact}>
+          If you find any issues please contact me on discord:{" "}
+          <a href="https://discordapp.com/users/137887927781818368">
+            RedMap#0001
+          </a>
+        </p>
       </div>
       <Particles
         className={styles.particles}
