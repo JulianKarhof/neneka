@@ -1,81 +1,151 @@
-import Head from "next/head";
+import React, { useEffect, useState } from "react";
+import { FlipCard } from "../components/flipCard/flipCard";
+import { CircularProgress, Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
+import { Message } from "../components/message/message";
+import classNames from "classnames";
+import { Octokit } from "@octokit/core";
 import Particles from "react-particles-js";
-import { SocialButton } from "../components/socialButton/socialButton";
+import Head from "next/head";
+import cookie from "js-cookie";
 
-export default function Home() {
+interface Message {
+  id: string;
+  nickname: string;
+  content: Content;
+}
+
+interface Content {
+  jp?: string;
+  en?: string;
+}
+
+const octokit = new Octokit();
+
+const GoodBye: React.FC = () => {
+  const [languageIsEn, setLanguageIsEn] = useState(false);
+  const [audio, setAudio] = useState<HTMLAudioElement[]>();
+  const [messages, setMessages] = useState<Message[]>();
+
+  useEffect(() => {
+    let seed: number;
+    if (!cookie.get("seed")) {
+      let arbitrary: number = getRandomArbitrary(1, 1000000);
+      cookie.set("seed", arbitrary.toString());
+      seed = arbitrary;
+    } else seed = parseInt(cookie.get("seed"));
+    octokit
+      .request("GET /gists/3caa3be29ee69626545b7098f7d26d00")
+      .then((res) => JSON.parse(res.data.files["neneka_messages.json"].content))
+      .then((data) => {
+        let messages: Message[] = [];
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+            messages.push({
+              id: key,
+              content: data[key].content,
+              nickname: data[key].nickname,
+            });
+          }
+        }
+        shuffle(messages, seed);
+        setMessages(messages);
+      });
+
+    setAudio(
+      [...new Array(8)].map((v, i) => new Audio(`/Sneeze_${i + 1}.mp3`))
+    );
+  }, [setAudio]);
+
+  const LangSwitch = (): React.ReactElement => {
+    return (
+      <div className={styles.switch}>
+        JP
+        <Switch
+          checked={languageIsEn}
+          onChange={(event) => setLanguageIsEn(event.target.checked)}
+        />
+        EN
+      </div>
+    );
+  };
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>子狐ねねか Fan Page</title>
+        <title>子狐ねねかの思い出</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <h1 className={styles.title}>
-        Welcome to <a href="http://www.meish.me/i/neko_neneka">ねねか's</a>{" "}
-        Page!
-      </h1>
-
-      <img src="/nene.png" className={styles.nene} />
-
-      <div className={styles.skew}>
-        <div className={styles.description}>
-          <p>Introduction</p>
-          Neneka is a very hardworking Indie VTuber, associated with the Doujin
-          Circle Rumu Rumu. She interacts with her fans frequently, and loves
-          playing games such as Mahjong Souls, League of Legends, Apex Legends,
-          and Valorant! She also loves watching anime, and singing songs.
-          <br />
-          <br />
-          The moment she reached 600 subscribers on Youtube, she streamed for 4
-          days, and managed to break 2000 subscribers in that marathon session!
-          Currently, she's on a 14-day long streaming marathon to raise money
-          for her rent and other living expenses.
+      <div className={styles.bg}>
+        <img
+          src="neneka.png"
+          className={styles.neneka}
+          onClick={() => audio[Math.floor(Math.random() * audio.length)].play()}
+        />
+        <div className={styles.headWrapper}>
+          <p className={styles.header}>子狐ねねかの思い出</p>
+          <p className={styles.subtitle}>Neko Neneka Memories</p>
+        </div>
+        <LangSwitch />
+        <div className={styles.wrapper}>
+          <div
+            className={classNames(
+              styles.message,
+              languageIsEn ? styles.en : styles.jp
+            )}
+          >
+            <Message isEn={languageIsEn} />
+          </div>
+          <div className={styles.feed}>
+            <LangSwitch />
+            <p
+              className={classNames(
+                styles.info,
+                languageIsEn ? styles.en : styles.jp
+              )}
+            >
+              {languageIsEn
+                ? "You can click on each individual card to flip it!"
+                : "カードをクリックしたら裏返すことができます!"}
+            </p>
+            {messages ? (
+              messages.map((message) => {
+                return (
+                  <div className={styles.card} key={message.id}>
+                    <FlipCard
+                      author={message.nickname}
+                      jp={message.content.jp}
+                      en={message.content.en}
+                      flipDefault={languageIsEn}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <CircularProgress color="secondary" />
+            )}
+          </div>
+        </div>
+        <div className={styles.specialThanks}>
+          <p>Special thanks to:</p>
+          <a href="https://discordapp.com/users/170544234514874368">Sheep</a>
+          <a href="https://www.youtube.com/channel/UCIydRbXAE2Nn2YAoGrzOL0w">
+            有栖川シュア
+          </a>
+          <a href="https://discordapp.com/users/214785086195761153">Azuraga</a>
+          <a href="https://discordapp.com/users/232044724549058562">bunpan</a>
         </div>
 
-        <div className={styles.socials}>
-          <SocialButton
-            url="https://www.youtube.com/channel/UCD8i-h5iqOaysEkDnF1CQ_A"
-            icon="/youtube.png"
-            color="#ff0000"
-          >
-            YouTube
-          </SocialButton>
-          <SocialButton
-            url="https://twitter.com/neko_neneka"
-            icon="/twitter.svg"
-            color="#1da1f2"
-          >
-            Twitter
-          </SocialButton>
-          <SocialButton
-            url="https://www.reddit.com/user/neko_neneka/"
-            icon="/reddit.svg"
-            color="#FF5700"
-          >
-            Reddit
-          </SocialButton>
-          <SocialButton
-            url="https://www.twitch.tv/neko_neneka"
-            icon="/twitch.svg"
-            color="#6441a5"
-          >
-            Twitch
-          </SocialButton>
-          <SocialButton url="https://neko-neneka.fanbox.cc/" color="#2c333c">
-            Fanbox
-          </SocialButton>
-          <SocialButton
-            url="https://marshmallow-qa.com/neko_neneka"
-            icon="/marshmallow.png"
-            color="#ffae8e"
-          >
-            Marshmallow
-          </SocialButton>
-        </div>
+        <p className={styles.contact}>
+          If you find any issues please contact me on discord:{" "}
+          <a href="https://discordapp.com/users/137887927781818368">
+            RedMap#0001
+          </a>
+        </p>
       </div>
       <Particles
         className={styles.particles}
+        canvasClassName={styles.canvas}
         params={{
           particles: {
             number: {
@@ -104,6 +174,33 @@ export default function Home() {
           },
         }}
       />
-    </div>
+    </>
   );
+};
+
+function shuffle(array: any[], seed: number) {
+  var m = array.length,
+    t,
+    i;
+
+  while (m) {
+    i = Math.floor(random(seed) * m--);
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+    ++seed;
+  }
+
+  return array;
 }
+
+function random(seed: number) {
+  var x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
+}
+
+function getRandomArbitrary(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+export default GoodBye;
