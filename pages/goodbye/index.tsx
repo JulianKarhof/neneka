@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlipCard } from "../../components/flipCard/flipCard";
-import { CircularProgress, IconButton, Switch } from "@material-ui/core";
+import { CircularProgress, Switch } from "@material-ui/core";
 import styles from "./index.module.scss";
 import { Message } from "../../components/message/message";
 import classNames from "classnames";
@@ -8,7 +8,6 @@ import { Octokit } from "@octokit/core";
 import Particles from "react-particles-js";
 import Head from "next/head";
 import cookie from "js-cookie";
-import { Shuffle } from "@material-ui/icons";
 
 interface Message {
   id: string;
@@ -25,7 +24,7 @@ const octokit = new Octokit();
 
 const GoodBye: React.FC = () => {
   const [languageIsEn, setLanguageIsEn] = useState(false);
-  const [audio, setAudio] = useState(null);
+  const [audio, setAudio] = useState<HTMLAudioElement[]>();
   const [messages, setMessages] = useState<Message[]>();
 
   useEffect(() => {
@@ -53,7 +52,9 @@ const GoodBye: React.FC = () => {
         setMessages(messages);
       });
 
-    setAudio(new Audio("/sneeze.mp3"));
+    setAudio(
+      [...new Array(8)].map((v, i) => new Audio(`/Sneeze_${i + 1}.mp3`))
+    );
   }, [setAudio]);
 
   const LangSwitch = (): React.ReactElement => {
@@ -79,7 +80,7 @@ const GoodBye: React.FC = () => {
         <img
           src="neneka.png"
           className={styles.neneka}
-          onClick={() => audio.play()}
+          onClick={() => audio[Math.floor(Math.random() * audio.length)].play()}
         />
         <div className={styles.headWrapper}>
           <p className={styles.header}>子狐ねねかの思い出</p>
