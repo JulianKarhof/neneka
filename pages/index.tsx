@@ -168,10 +168,13 @@ const GoodBye: React.FC = () => {
         </div>
 
         <p className={styles.contact}>
-          If you find any issues please contact me on discord:{" "}
-          <a href="https://discordapp.com/users/137887927781818368">
-            RedMap#0001
-          </a>
+          <span>If you find any issues please contact me on discord</span>
+          <span>何か問題があればDiscordで連絡してください。</span>
+          <span>
+            <a href="https://discordapp.com/users/137887927781818368">
+              RedMap#0001
+            </a>
+          </span>
         </p>
       </div>
       <Particles
