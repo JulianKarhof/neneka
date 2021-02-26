@@ -3,6 +3,7 @@ import ReactCardFlip from "react-card-flip";
 import styles from "./flipCard.module.scss";
 import Tilt from "react-tilt";
 import classNames from "classnames";
+import { useSnackbar } from "notistack";
 
 interface FlipCardProps {
   author: string;
@@ -19,6 +20,8 @@ export const FlipCard: React.FC<FlipCardProps> = ({
 }) => {
   const [flipped, setFlipped] = useState(flipDefault);
   const [unflip, setUnflip] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [shake, setShake] = useState(false);
 
   const isOneSided = !(en && jp);
 
@@ -39,9 +42,29 @@ export const FlipCard: React.FC<FlipCardProps> = ({
         flipSpeedFrontToBack={unflip ? 0 : 0.6}
       >
         <div
-          className={flipDefault ? styles.back : styles.front}
+          className={classNames(
+            flipDefault ? styles.back : styles.front,
+            shake ? styles.shake : null
+          )}
           onClick={() => {
             if (!isOneSided) setFlipped(!flipped);
+            else
+              enqueueSnackbar(
+                "This card doesn't have a translation\nこのカードには翻訳がありません",
+                {
+                  variant: "info",
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "center",
+                  },
+                  preventDuplicate: true,
+                  disableWindowBlurListener: true,
+                  autoHideDuration: 2000,
+                  style: { whiteSpace: "pre-line" },
+                }
+              );
+            setShake(true);
+            setTimeout(() => setShake(false), 1000);
           }}
         >
           <p

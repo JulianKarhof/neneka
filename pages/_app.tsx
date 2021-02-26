@@ -1,6 +1,7 @@
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { useEffect } from "react";
 import "../styles/globals.scss";
+import { SnackbarProvider } from "notistack";
 
 const theme = createMuiTheme({
   palette: {
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <SnackbarProvider>
+        <Component {...pageProps} />
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }
