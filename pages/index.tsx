@@ -56,6 +56,21 @@ const GoodBye: React.FC = () => {
           }
         }
         shuffle(messages, seed);
+        for (let i = 0; i < 5; i++) {
+          if (!messages[i].content.en || !messages[i].content.jp) {
+            console.log("swap!");
+            let index = 0;
+            let element: Message = messages[0];
+            do {
+              index = Math.floor(Math.random() * messages.length);
+              console.log(index);
+              element = messages[index];
+            } while (!(element.content.en && element.content.jp));
+            let oldMsg = messages[i];
+            messages[i] = messages[index];
+            messages[index] = oldMsg;
+          }
+        }
         setMessages(messages);
 
         let specialThanks: Person[] = [
