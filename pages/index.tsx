@@ -8,6 +8,7 @@ import { Octokit } from "@octokit/core";
 import Particles from "react-particles-js";
 import Head from "next/head";
 import cookie from "js-cookie";
+import { Person } from "@material-ui/icons";
 
 interface Message {
   id: string;
@@ -20,12 +21,18 @@ interface Content {
   en?: string;
 }
 
+interface Person {
+  name: string;
+  link: string;
+}
+
 const octokit = new Octokit();
 
 const GoodBye: React.FC = () => {
   const [languageIsEn, setLanguageIsEn] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement[]>();
   const [messages, setMessages] = useState<Message[]>();
+  const [thanks, setThanks] = useState<Person[]>();
 
   useEffect(() => {
     let seed: number;
@@ -50,6 +57,27 @@ const GoodBye: React.FC = () => {
         }
         shuffle(messages, seed);
         setMessages(messages);
+
+        let specialThanks: Person[] = [
+          {
+            name: "Sheep",
+            link: "https://discordapp.com/users/170544234514874368",
+          },
+          {
+            name: "有栖川シュア",
+            link: "https://www.youtube.com/channel/UCIydRbXAE2Nn2YAoGrzOL0w",
+          },
+          {
+            name: "Azuraga",
+            link: "https://discordapp.com/users/214785086195761153",
+          },
+          {
+            name: "bunpan",
+            link: "https://discordapp.com/users/232044724549058562",
+          },
+        ];
+        shuffle(specialThanks, seed);
+        setThanks(specialThanks);
       });
 
     setAudio(
@@ -128,12 +156,15 @@ const GoodBye: React.FC = () => {
         </div>
         <div className={styles.specialThanks}>
           <p>Special thanks to:</p>
-          <a href="https://discordapp.com/users/170544234514874368">Sheep</a>
-          <a href="https://www.youtube.com/channel/UCIydRbXAE2Nn2YAoGrzOL0w">
-            有栖川シュア
-          </a>
-          <a href="https://discordapp.com/users/214785086195761153">Azuraga</a>
-          <a href="https://discordapp.com/users/232044724549058562">bunpan</a>
+          {thanks ? (
+            thanks.map((person, i) => (
+              <a key={i} href={person.link}>
+                {person.name}
+              </a>
+            ))
+          ) : (
+            <></>
+          )}
         </div>
 
         <p className={styles.contact}>
