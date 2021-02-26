@@ -168,7 +168,7 @@ const GoodBye: React.FC = () => {
         </div>
 
         <p className={styles.contact}>
-          <span>If you find any issues please contact me on discord</span>
+          <span>If you find any issues, please contact me on Discord</span>
           <span>何か問題があればDiscordで連絡してください。</span>
           <span>
             <a href="https://discordapp.com/users/137887927781818368">
