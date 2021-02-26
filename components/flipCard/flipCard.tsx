@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import styles from "./flipCard.module.scss";
 import Tilt from "react-tilt";
+import classNames from "classnames";
 
 interface FlipCardProps {
   author: string;
@@ -43,7 +44,12 @@ export const FlipCard: React.FC<FlipCardProps> = ({
             if (!isOneSided) setFlipped(!flipped);
           }}
         >
-          <p className={styles.message}>
+          <p
+            className={classNames(styles.message, {
+              [styles.en]: isOneSided && en,
+              [styles.jp]: isOneSided && jp,
+            })}
+          >
             {isOneSided ? (en ? en : jp) : flipDefault ? en : jp}
           </p>
           <p className={styles.author}>- {author}</p>
