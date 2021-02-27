@@ -145,9 +145,16 @@ const GoodBye: React.FC = () => {
                 languageIsEn ? styles.en : styles.jp
               )}
             >
-              {languageIsEn
-                ? "You can click on each individual card to flip it!"
-                : "カードをクリックしたら裏返すことができます!"}
+              <span>
+                {languageIsEn
+                  ? "Some of these card were translated with machine translation."
+                  : "一部のメッセージは自動翻訳で書かれました"}
+              </span>
+              <span>
+                {languageIsEn
+                  ? "You can click on each individual card to flip it!"
+                  : "カードをクリックしたら裏返すことができます!"}
+              </span>
             </p>
             {messages ? (
               messages.map((message) => {
