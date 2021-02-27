@@ -9,6 +9,7 @@ import Particles from "react-particles-js";
 import Head from "next/head";
 import cookie from "js-cookie";
 import { Person } from "@material-ui/icons";
+import localMessages from "./neneka_messages.json";
 
 interface Message {
   id: string;
@@ -26,7 +27,9 @@ interface Person {
   link: string;
 }
 
-const octokit = new Octokit();
+const octokit = new Octokit({
+  auth: "341b252056a9293b7007b42612bc43031a4e71f2",
+});
 
 const GoodBye: React.FC = () => {
   const [languageIsEn, setLanguageIsEn] = useState(false);
@@ -70,7 +73,37 @@ const GoodBye: React.FC = () => {
           }
         }
         setMessages(messages);
-
+      })
+      .catch((e) => {
+        console.log("Error! Using local messages instead.");
+        const data = localMessages;
+        let messages: Message[] = [];
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+            messages.push({
+              id: key,
+              content: data[key].content,
+              nickname: data[key].nickname,
+            });
+          }
+        }
+        shuffle(messages, seed);
+        for (let i = 0; i < 5; i++) {
+          if (!messages[i].content.en || !messages[i].content.jp) {
+            let index = 0;
+            let element: Message = messages[0];
+            do {
+              index = Math.floor(Math.random() * messages.length);
+              element = messages[index];
+            } while (!(element.content.en && element.content.jp));
+            let oldMsg = messages[i];
+            messages[i] = messages[index];
+            messages[index] = oldMsg;
+          }
+        }
+        setMessages(messages);
+      })
+      .finally(() => {
         let specialThanks: Person[] = [
           {
             name: "Sheep",
