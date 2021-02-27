@@ -28,7 +28,7 @@ interface Person {
 }
 
 const octokit = new Octokit({
-  auth: "341b252056a9293b7007b42612bc43031a4e71f2",
+  auth: "367f7a8ac8fffc0b39be079a598346a6894db08f",
 });
 
 const GoodBye: React.FC = () => {
